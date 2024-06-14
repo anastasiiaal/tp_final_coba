@@ -1,30 +1,11 @@
-# React + TypeScript + Vite
+### Tests
+J'ai essayé de tester le maximum des combinaisons des dès qui semblent pertinentes pour le test. Les tests pour les dès uniques, pour les combinaisons simples et les combinaisons avec des exclusions ont été séparés dans des groupes logiques. J'ai fait tous les tests pour les fonctions que j'ai créées, mais si j'avais plus de temps, j'aurai fait différemment ma fonction `areTeamsEqual()`.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Partie terminée
+- Création des fichiers de test
+- Création des tests unitaires pour couvrir le maximum des cas qui pourraient potentiellement planter
+- Réajustement des fonctions lorsque les tests ne sont pas concluants pour les corriger
 
-Currently, two official plugins are available:
+### Problèmes rencontrées
+Limite de temps, sinon pas d'autres problematiques, à mon ressenti j'ai bien compris le sujet des tests unitaires, tandis que pour les tests e2e je referai un tour de nos cours de mon côté pour comprendre en profondeur le fonctionnement des différentes features disponibles avec tous les outils.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
