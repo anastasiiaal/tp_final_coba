@@ -15,34 +15,39 @@ export function getDiceValue(dice: string) {
     }
 }
 
-export function getTeamScore(dices: string) {
+export function getTeamScore(dices: string[]) {
     let sum = 0;
     const total = dices.length;
     const otherTeamSize = 7 - total;
-
-    let valueOrange = 0;
-    const valueBlue = otherTeamSize;
-    let valuePink = 0;
     let minDiceValue = 3; // attribute the highest possible number
     let minDiceCount = 0;
 
     dices.forEach((dice: string) => {
         const thisValue = getDiceValue(dice) ?? 0
+        sum += thisValue;
+        // logics to define the smallest dice in case we have pink
         if (thisValue < minDiceValue) {
             minDiceValue = thisValue;
             minDiceCount = 1;
         } else if (thisValue === minDiceValue) {
             minDiceCount++;
         }
-        sum += thisValue;
     });
 
-    if (total % 2 === 0) {
-        valueOrange++;
-    }
+    dices.forEach((dice: string) => {
+        if (dice === 'orange') {
+            if (total % 2 === 0) {
+                sum += 1;
+            }
+        }
+        if (dice === 'blue') {
+            sum += otherTeamSize;
+        }
 
-    valuePink = minDiceValue * minDiceCount;
-    sum = sum + valueOrange + valueBlue + valuePink;
+        if (dice === 'pink') {
+            sum -= minDiceValue * minDiceCount;
+        }
+    });
 
     return sum;
 }

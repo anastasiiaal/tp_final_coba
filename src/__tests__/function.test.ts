@@ -1,4 +1,4 @@
-import { getDiceValue } from '../modules/test'
+import { getDiceValue, getTeamScore } from '../modules/test'
 import { expect, describe, it } from 'vitest';
 
 describe('findMatch', () => {
@@ -20,6 +20,16 @@ describe('findMatch', () => {
         });
         it('case: blue', () => {
             expect(getDiceValue('blue')).toBe(0);
+        });
+    });
+
+    describe('simple group sum (no exceptions)', () => {
+        it('case: vert + vert', () => {
+            expect(getTeamScore(['vert', 'vert'])).toBe(2);
+        });
+
+        it('case: gris + jaune', () => {
+            expect(getTeamScore(['gris', 'jaune'])).toBe(1);
         });
     });
 });
