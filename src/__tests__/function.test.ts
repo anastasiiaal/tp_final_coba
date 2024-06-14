@@ -49,6 +49,11 @@ describe('findMatch', () => {
             expect(getTeamScore(['vert', 'blue'])).toBe(6); 
         });
 
+        it('blue should be 5', () => {
+            // 3 dice here => both blue should be == 4
+            expect(getTeamScore(['vert', 'blue', 'blue'])).toBe(9); 
+        });
+
         it('blue should be 2', () => {
             // 5 dice here so 2 in opposite
             expect(getTeamScore(['vert', 'vert', 'vert', 'vert', 'blue'])).toBe(6); 
@@ -96,6 +101,16 @@ describe('findMatch', () => {
         it('orange + rose exception', () => {
             // orange should not be cancelled because it equals to 2
             expect(getTeamScore(['vert', 'vert', 'rose', 'orange'])).toBe(5); 
+        });
+
+        it('blue + rose exception', () => {
+            // bleu shoukd be == 3 and not cancelled
+            expect(getTeamScore(['vert', 'vert', 'rose', 'blue'])).toBe(6); 
+        });
+
+        it('orange + rose exception', () => {
+            // both green & blue should be cancelled as they == 1
+            expect(getTeamScore(['vert', 'vert', 'vert', 'vert', 'rose', 'blue'])).toBe(3); 
         });
     });
 });
