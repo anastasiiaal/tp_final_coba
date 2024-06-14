@@ -18,7 +18,7 @@ export function getDiceValue(dice: string) {
 export function getTeamScore(dices: string[]) {
     let sum = 0;
     const total = dices.length;
-    const otherTeamSize = 7 - total;
+    const otherTeamSize = 7 - total; // suppose the total nb of dice == 7 like in by Odin
     let minDiceValue = 3; // attribute the highest possible number
     let minDiceCount = 0;
 
