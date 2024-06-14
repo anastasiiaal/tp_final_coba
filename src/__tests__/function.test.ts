@@ -45,15 +45,18 @@ describe('findMatch', () => {
 
     describe('blue exception', () => {
         it('blue should be 5', () => {
-            expect(getTeamScore(['vert', 'blue'])).toBe(6); // two dice here => 5 in ohther team
+            // two dice here => 5 in ohther team
+            expect(getTeamScore(['vert', 'blue'])).toBe(6); 
         });
 
         it('blue should be 2', () => {
-            expect(getTeamScore(['vert', 'vert', 'vert', 'vert', 'blue'])).toBe(6); // 5 dice here so 2 in opposite
+            // 5 dice here so 2 in opposite
+            expect(getTeamScore(['vert', 'vert', 'vert', 'vert', 'blue'])).toBe(6); 
         });
 
         it('blue should be 1', () => {
-            expect(getTeamScore(['vert', 'jaune', 'vert', 'vert', 'vert', 'blue'])).toBe(4); // 6 dice here so 1 in opposite
+            // 6 dice here so 1 in opposite
+            expect(getTeamScore(['vert', 'jaune', 'vert', 'vert', 'vert', 'blue'])).toBe(4);
         });
     });
 
@@ -74,8 +77,25 @@ describe('findMatch', () => {
             expect(getTeamScore(['rose', 'jaune', 'vert'])).toBe(4);
         });
 
-        it('should not cansel itself', () => {
+        it('rose should not cancel itself', () => {
             expect(getTeamScore(['rose', 'rose'])).toBe(6);
+        });
+    });
+
+    describe('combination of exceptions', () => {
+        it('orange + blue exception', () => {
+            // blue should be 4 && orange be 1
+            expect(getTeamScore(['vert', 'orange', 'blue'])).toBe(6);
+        });
+
+        it('orange + rose exception', () => {
+            // both green & orange should be cancelled as they == 1
+            expect(getTeamScore(['vert', 'rose', 'orange'])).toBe(3); 
+        });
+
+        it('orange + rose exception', () => {
+            // orange should not be cancelled because it equals to 2
+            expect(getTeamScore(['vert', 'vert', 'rose', 'orange'])).toBe(5); 
         });
     });
 });
