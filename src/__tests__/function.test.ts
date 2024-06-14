@@ -10,7 +10,7 @@ describe('findMatch', () => {
             expect(getDiceValue('gris')).toBe(2);
         });
         it('case: orange', () => {
-            expect(getDiceValue('orange')).toBe(0);
+            expect(getDiceValue('orange')).toBe(1);
         });
         it('case: jaune', () => {
             expect(getDiceValue('jaune')).toBe(-1);
