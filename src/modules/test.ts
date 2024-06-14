@@ -53,5 +53,9 @@ export function getTeamScore(dices: string[]) {
     return sum;
 }
 
-
+export function areTeamsEqual(team1: string[], team2: string[]): boolean {
+    const sortedTeam1 = team1.sort();
+    const sortedTeam2 = team2.sort();
+    return JSON.stringify(sortedTeam1) === JSON.stringify(sortedTeam2);
+}
 

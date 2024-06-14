@@ -1,4 +1,4 @@
-import { getDiceValue, getTeamScore } from '../modules/test'
+import { getDiceValue, getTeamScore, areTeamsEqual } from '../modules/test'
 import { expect, describe, it } from 'vitest';
 
 describe('findMatch', () => {
@@ -111,6 +111,20 @@ describe('findMatch', () => {
         it('orange + rose exception', () => {
             // both green & blue should be cancelled as they == 1
             expect(getTeamScore(['vert', 'vert', 'vert', 'vert', 'rose', 'blue'])).toBe(3); 
+        });
+    });
+
+    describe('teams equality', () => {
+        it('should consider teams with the same elements as equal', () => {
+            const team1 = ['vert', 'rose', 'orange'];
+            const team2 = ['vert', 'orange', 'rose'];
+            expect(areTeamsEqual(team1, team2)).toBe(true);
+        });
+
+        it('should NOT consider different teams as equal', () => {
+            const team1 = ['vert', 'rose', 'orange'];
+            const team2 = ['vert', 'vert', 'orange'];
+            expect(areTeamsEqual(team1, team2)).toBe(false);
         });
     });
 });
