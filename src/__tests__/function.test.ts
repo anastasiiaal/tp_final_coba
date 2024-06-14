@@ -56,4 +56,26 @@ describe('findMatch', () => {
             expect(getTeamScore(['vert', 'jaune', 'vert', 'vert', 'vert', 'blue'])).toBe(4); // 6 dice here so 1 in opposite
         });
     });
+
+    describe('rose exception', () => {
+        it('should make green == 0', () => {
+            expect(getTeamScore(['rose', 'vert'])).toBe(3);
+        });
+
+        it('should make both green == 0', () => {
+            expect(getTeamScore(['rose', 'vert', 'vert'])).toBe(3);
+        });
+
+        it('should make both green == 0', () => {
+            expect(getTeamScore(['rose', 'gris', 'vert', 'vert'])).toBe(5);
+        });
+
+        it('should make jaune == 0', () => {
+            expect(getTeamScore(['rose', 'jaune', 'vert'])).toBe(4);
+        });
+
+        it('should not cansel itself', () => {
+            expect(getTeamScore(['rose', 'rose'])).toBe(6);
+        });
+    });
 });

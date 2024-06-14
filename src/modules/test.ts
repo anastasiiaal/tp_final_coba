@@ -19,7 +19,7 @@ export function getTeamScore(dices: string[]) {
     let sum = 0;
     const total = dices.length;
     const otherTeamSize = 7 - total; // suppose the total nb of dice == 7 like in by Odin
-    let minDiceValue = 3; // attribute the highest possible number
+    let minDiceValue = 3; // attribute the highest possible number (so that rose doesn't cansel itself)
     let minDiceCount = 0;
 
     dices.forEach((dice: string) => {
@@ -29,7 +29,7 @@ export function getTeamScore(dices: string[]) {
         if (thisValue < minDiceValue) {
             minDiceValue = thisValue;
             minDiceCount = 1;
-        } else if (thisValue === minDiceValue) {
+        } else if (thisValue === minDiceValue && thisValue < 3) {
             minDiceCount++;
         }
     });
@@ -44,7 +44,7 @@ export function getTeamScore(dices: string[]) {
             sum += otherTeamSize;
         }
 
-        if (dice === 'pink') {
+        if (dice === 'rose') {
             sum -= minDiceValue * minDiceCount;
         }
     });
