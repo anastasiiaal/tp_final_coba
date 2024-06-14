@@ -29,6 +29,11 @@ export function getTeamScore(dices: string[]) {
                 thisValue += 1;
             }
         }
+
+        if (dice === 'blue') {
+            thisValue += otherTeamSize;
+        }
+        
         sum += thisValue;
         // logics to define the smallest dice in case we have pink
         if (thisValue < minDiceValue) {
@@ -40,10 +45,6 @@ export function getTeamScore(dices: string[]) {
     });
 
     dices.forEach((dice: string) => {
-        if (dice === 'blue') {
-            sum += otherTeamSize;
-        }
-
         if (dice === 'rose') {
             sum -= minDiceValue * minDiceCount;
         }
